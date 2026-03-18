@@ -1,66 +1,52 @@
-export * from "../types/todo";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ITodo } from "../types/todo";
+import { Todo, TodoState, FilterType } from "../types/todo";
 import { toast } from "sonner";
 
-const initialState: ITodo[] = localStorage.getItem("todos")
-  ? JSON.parse(localStorage.getItem("todos")!)
-  : [];
+const initialState: TodoState = {
+  todos: [],
+  filter: 'all',
+};
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<{ text: string; id: string }>) => {
-      const { id, text } = action.payload;
-
-      const newTodo: ITodo = {
-        id,
-        text,
-        checked: false,
-      };
-
-      state.push(newTodo);
-      localStorage.setItem("todos", JSON.stringify(state));
+      state.todos.push({
+        ...action.payload,
+        completed: false,
+        createdAt: new Date().toISOString(),
+      });
+      toast.success("Tarefa adicionada!");
     },
     removeTodo: (state, action: PayloadAction<string>) => {
-      const newState = state.filter((todo) => todo.id !== action.payload);
-      localStorage.setItem("todos", JSON.stringify(newState));
-
-      return newState;
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      toast.info("Tarefa removida.");
     },
-    checkTodo: (state, action: PayloadAction<string>) => {
-      const newState = state.map((todo) =>
-        todo.id === action.payload ? { ...todo, checked: !todo.checked } : todo
-      );
-      localStorage.setItem("todos", JSON.stringify(newState));
-
-      return newState;
-    },
-    editTodo: (
-      state,
-      action: PayloadAction<{ id: string; newText: string }>
-    ) => {
-      if (action.payload.newText === "") {
-        const newState = state.filter((todo) => todo.id !== action.payload.id);
-        toast.warning(
-          "Você apagou todo o conteúdo, então deletamos a nota. Se deseja adicionar uma nova, use o campo indicado!"
-        );
-        return newState;
-      } else {
-        const newState = state.map((todo) => {
-          if (todo.id === action.payload.id) {
-            return { ...todo, text: action.payload.newText };
-          }
-          return todo;
-        });
-
-        localStorage.setItem("todos", JSON.stringify(newState));
-        return newState;
+    toggleTodo: (state, action: PayloadAction<string>) => {
+      const todo = state.todos.find((t) => t.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed;
       }
+    },
+    editTodo: (state, action: PayloadAction<{ id: string; text: string }>) => {
+      const { id, text } = action.payload;
+      const todo = state.todos.find((t) => t.id === id);
+      if (todo) {
+        if (text.trim() === "") {
+          state.todos = state.todos.filter((t) => t.id !== id);
+          toast.warning("Texto vazio, tarefa removida.");
+        } else {
+          todo.text = text;
+          toast.success("Tarefa atualizada!");
+        }
+      }
+    },
+    setFilter: (state, action: PayloadAction<FilterType>) => {
+      state.filter = action.payload;
     },
   },
 });
 
-export const { addTodo, removeTodo, checkTodo, editTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodo, editTodo, setFilter } = todoSlice.actions;
 export default todoSlice.reducer;
