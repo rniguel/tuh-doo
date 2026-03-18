@@ -1,80 +1,59 @@
-# tuh-doo 🎉
+# 📝 tuh-doo
 
-**tuh-doo** é um aplicativo de lista de tarefas interativo e divertido, com animações de recompensa para quando você marcar uma tarefa como concluída. Ele utiliza animações como confetes, balões e emojis para tornar o gerenciamento de tarefas mais divertido! 😎
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
+[![Redux](https://img.shields.io/badge/Redux_Toolkit-2.6-764ABC?logo=redux)](https://redux-toolkit.js.org/)
 
-## Funcionalidades 🚀
+Uma aplicação de To-Do List moderna, rápida e divertida, focada em uma experiência de usuário fluida com animações e feedback visual.
 
-- **Lista de Tarefas:** Adicione, edite e exclua tarefas facilmente.
-- **Animações de Recompensa:** Use animações de confetes, balões e emojis como recompensas ao completar tarefas.
-- **Armazenamento Local:** Suas tarefas são salvas no `localStorage`, o que significa que elas são persistentes entre as sessões.
-- **Redux Toolkit:** Utiliza Redux para gerenciar o estado global do aplicativo de maneira eficiente.
-- **Responsivo e Atraente:** Desenvolvido com **Tailwind CSS**, garantindo uma ótima aparência em dispositivos móveis e desktops.
+## ✨ Funcionalidades
 
-## Demonstração 📸
+- ✅ Gerenciamento de tarefas (Adicionar, Alternar, Remover)
+- 💾 Persistência local com Redux Persist
+- 🔍 Filtros: Todas, Ativas e Concluídas
+- ✏️ Edição inline (clique duplo)
+- 🌓 Dark Mode nativo
+- 🏆 Celebração com confete ao concluir tarefas
+- 📱 Design Responsivo e Acessível
 
-Você pode conferir uma demonstração do projeto [aqui](https://miguelitodev.github.io/tuh-doo).
+## 🛠️ Tech Stack
 
-## Tecnologias Usadas 🔧
+- **Frontend:** React 19, TypeScript
+- **Estilização:** Tailwind CSS 4
+- **Estado:** Redux Toolkit + Redux Persist
+- **Animações:** Framer Motion
+- **Notificações:** Sonner
+- **Efeitos:** React Rewards
 
-- **React** (com Hooks)
-- **Redux Toolkit** para gerenciamento de estado
-- **Tailwind CSS** para estilização
-- **Framer Motion** para animações
-- **React Rewards** para as animações de recompensa (confetes, balões, emojis)
-- **Sonner** para notificações
-- **Vite** como bundler e servidor de desenvolvimento
-- **TypeScript** para segurança de tipos
-- **ESLint** para garantir um código limpo e consistente
+## 🚀 Como rodar o projeto
 
-## Como Rodar o Projeto 🌱
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-Para rodar o projeto localmente em sua máquina, siga os passos abaixo:
+2. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
 
-### 1. Clone o repositório
+3. Para build de produção:
+   ```bash
+   npm run build
+   ```
 
-```bash
-git clone https://github.com/miguelitodev/tuh-doo.git
+## 📂 Estrutura de Pastas
+
+```text
+src/
+├── components/ # Componentes reutilizáveis
+├── redux/      # Store e Slices do Redux
+├── types/      # Definições de tipos TypeScript
+└── assets/     # Recursos estáticos (imagens, ícones)
 ```
 
-### 2. Instale as dependências
+## 📜 Licença
 
-```bash
-cd tuh-doo
-npm install
-```
-
-### 3. Execute o aplicativo em modo de desenvolvimento
-
-```bash
-npm run dev
-```
-
-Isso abrirá o aplicativo no seu navegador, normalmente em `http://localhost:3000`.
-
-### 4. Para fazer o build de produção
-
-```bash
-npm run build
-```
-
-### 5. Para ver o build de produção em modo preview
-
-```bash
-npm run preview
-```
-
-## Como Contribuir 🤝
-
-1. Faça um fork do projeto.
-2. Crie uma branch para a sua feature (`git checkout -b minha-feature`).
-3. Faça commit das suas mudanças (`git commit -am 'Adiciona nova feature'`).
-4. Envie para o repositório remoto (`git push origin minha-feature`).
-5. Abra um Pull Request para a branch `main`.
-
-## Licença 📜
-
-Este projeto está licenciado sob a **MIT License** - veojeto.
-2. Crie uma branch para a sua feature (`git checkout -b minha-feature`).
-3. Faça commit das suas mudanças (`git commit -am 'Adiciona nova feature'`).
-4. Envie para o repositório remoto (`git push origin minha-feature`).
-5. Abra um Pull Request para a branch `main`.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
